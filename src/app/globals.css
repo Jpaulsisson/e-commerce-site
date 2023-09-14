@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes grow {
+  from {
+    scale: 0,
+  }
+  to {
+    scale: 1,
+  }
+}
+
 :root {
 
 }
@@ -12,4 +21,8 @@ html {
 
 body {
   height: 100%;
+}
+
+.modal.active {
+  animation: grow 300ms;
 }
