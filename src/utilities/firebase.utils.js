@@ -22,9 +22,6 @@ googleProvider.setCustomParameters({
   prompt: "select_account"
 })
 
-facebookProvider.setCustomParameters({
-  'display': 'popup'
-});
 
 //creating an auth instance
 export const auth = getAuth();
