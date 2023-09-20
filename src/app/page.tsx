@@ -50,7 +50,7 @@ export default function Home() {
             <div className="background w-full h-full bg-center bg-cover flex flex-col items-start justify-end" style={{ backgroundImage: `url(${imageURL})`}}>
               <div className='category opacity-80 bg-amber-700/90 p-8 md:p-16 border-thin border-black'>
                 <h2 className='text-5xl text-center text-slate-200 mb-2 tracking-wider '>{title}</h2>
-                <p className='text-xl text-center text-slate-200 p-2'>Shop Now</p>
+                <p className='text-xl text-center text-slate-200 underline underline-offset-4 p-2'>Shop Now</p>
               </div>
             </div>
           </div>
