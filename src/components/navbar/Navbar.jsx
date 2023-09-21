@@ -1,8 +1,8 @@
 "use client"
 
 import Image from "next/image";
-import Logo from '../resources/logo.svg';
-import Menu from '../resources/menu.svg';
+import Logo from '../../resources/logo.svg';
+import Menu from '../../resources/menu.svg';
 import { Amaranth } from 'next/font/google';
 import ReactModal from "react-modal";
 import { useState, useEffect } from "react";
@@ -23,6 +23,7 @@ export default function Navbar() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [appElement, setAppElement] = useState(undefined)
+  
   const openModal = () => {
     setIsOpen((prev) => !prev);
   }
@@ -68,7 +69,7 @@ export default function Navbar() {
         <a className="hover:underline" href="/shop">
           <h3>Contact</h3>
         </a>
-        <a className="hover:underline" href="/sign-in">
+        <a className="hover:underline" href="/auth">
           <h3>Sign in</h3>
         </a>
       </div>
@@ -115,7 +116,7 @@ export default function Navbar() {
           </a>
           <a
             className="from-slate-300/50 via-slate-300/90 to-transparent bg-gradient-to-l border-t-thin border-b-thin border-r-thin border-amber-300 px-4 py-2 rounded-r-md"
-            href="/sign-in"
+            href="/auth"
           >
             <h3>Sign in</h3>
           </a>
