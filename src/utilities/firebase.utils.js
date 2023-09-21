@@ -8,7 +8,8 @@ import {
   GithubAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut
+  signOut,
+  onAuthStateChanged
 } from 'firebase/auth';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
 
@@ -66,10 +67,10 @@ export const createUserDocFromAuth = async (userAuth, additionalInfo) => {
 
   //getDoc() is basically a query to the database to see
   //if a user with that uid exists already
-  //if not, the function returns an error
+  //if not, the function returns null basically
   const userSnapshot = await getDoc(userDocRef);
 
-  //here we are saying if userSnapshot returns an error
+  //here we are saying if the user doesn't exist, make a new one
   //create a new user in our database from the information
   if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
@@ -80,6 +81,7 @@ export const createUserDocFromAuth = async (userAuth, additionalInfo) => {
         displayName: displayName,
         email: email,
         createdAt: createdAt,
+        ...additionalInfo
       });
     } catch (err) {
       console.error('error creating user', err.message);
@@ -102,3 +104,7 @@ export const createUserDocFromAuth = async (userAuth, additionalInfo) => {
   }
 
   export const signOutUser = () => signOut(auth);
+
+  export const onAuthStateChangedListener = (callback) => {
+    onAuthStateChanged(auth, callback)
+  }

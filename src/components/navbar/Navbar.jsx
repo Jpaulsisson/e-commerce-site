@@ -25,12 +25,7 @@ export default function Navbar() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [appElement, setAppElement] = useState(undefined)
-  const { currentUser, setCurrentUser } = useContext(UserContext);
-  
-  const logOutUser = async () => {
-    await signOutUser();
-    setCurrentUser(null);
-  }
+  const { currentUser } = useContext(UserContext);
 
   const openModal = () => {
     setIsOpen((prev) => !prev);
@@ -78,7 +73,7 @@ export default function Navbar() {
           <h3>Contact</h3>
         </a>
         {currentUser ?
-          <button onClick={logOutUser}>Sign Out</button>
+          <button onClick={signOutUser}>Sign Out</button>
           :
           <a className="hover:underline" href="/auth">
           <h3>Sign in</h3>
@@ -126,7 +121,7 @@ export default function Navbar() {
             <h3 className="text-center">Contact</h3>
           </a>
           {currentUser ?
-            <button className="w-full from-slate-300/50 via-slate-300/90 to-transparent bg-gradient-to-l border-t-thin border-b-thin border-r-thin border-amber-300 px-4 py-2 rounded-r-md" onClick={logOutUser}>Sign Out</button>
+            <button className="w-full from-slate-300/50 via-slate-300/90 to-transparent bg-gradient-to-l border-t-thin border-b-thin border-r-thin border-amber-300 px-4 py-2 rounded-r-md" onClick={signOutUser}>Sign Out</button>
             :
             <a
             className="w-full from-slate-300/50 via-slate-300/90 to-transparent bg-gradient-to-l border-t-thin border-b-thin border-r-thin border-amber-300 px-4 py-2 rounded-r-md"

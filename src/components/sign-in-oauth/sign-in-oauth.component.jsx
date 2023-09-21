@@ -7,8 +7,6 @@ import {
   signInWithFacebookPopup,
   signInWithGitHubPopup,
 } from '../../utilities/firebase.utils.js';
-import {UseUserContext} from '../../contexts/user.context'
-import { UserContext } from '../../contexts/user.context';
 import GoogleIcon from '../../resources/google.svg';
 import GitHubIcon from '../../resources/github.svg';
 import Image from 'next/image.js';
@@ -16,12 +14,8 @@ import Image from 'next/image.js';
 
 export default function signInOAuth() {
 
-  const { setCurrentUser } = UseUserContext();
-
   const googleLogin = async () => {
-    const { user } = await signInWithGooglePopup();
-    setCurrentUser(user);
-    createUserDocFromAuth(user);
+    await signInWithGooglePopup();
   };
 
   const logFacebookUser = () => {

@@ -2,8 +2,7 @@
 
 import { Josefin_Sans } from 'next/font/google';
 import React from 'react';
-import { useState, useContext } from 'react';
-import { UserContext } from '@/contexts/user.context';
+import { useState } from 'react';
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocFromAuth,
@@ -28,7 +27,6 @@ export default function SignUpForm() {
   
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { name, email, password, confirm } = formFields;
-  const { setCurrentUser } = useContext(UserContext);
 
   const handleFormChange = (e) => {
     setFormFields((prev) => ({
@@ -49,14 +47,12 @@ export default function SignUpForm() {
       );
       return;
     }
-    
+
     try {
       const { user } = await createAuthUserWithEmailAndPassword(
         email,
         password
       );
-      
-        setCurrentUser(user);
 
       await createUserDocFromAuth(user, { name });
       resetFormFields();
