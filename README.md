@@ -1,12 +1,12 @@
 # Everybody &#9825;'s Pizza
 
 ## Preview:
-<img src='/Users/paulsisson/projects/react/e-commerce-site/my-app/src/resources/preview-desktop.jpg' alt='site-preview' width='250px'/>
-<img src='/Users/paulsisson/projects/react/e-commerce-site/my-app/src/resources/preview-mobile.jpg' alt='site-preview' height='165px'/>
+<img src='src/resources/preview-desktop.jpg' alt='site-preview' width='250px'/>
+<img src='src/resources/preview-mobile.jpg' alt='site-preview' height='165px'/>
 
 ## Things I learned:
 - `Firebase`/`Firestore`
-- Setting up `OAuth2.0` with <img src='/Users/paulsisson/projects/react/e-commerce-site/my-app/src/resources/google.svg' width='25px'/> <img src='/Users/paulsisson/projects/react/e-commerce-site/my-app/src/resources/github.svg' width='25px'/> <img src='/Users/paulsisson/projects/react/e-commerce-site/my-app/src/resources/facebook.svg' width='25px'/>
+- Setting up `OAuth2.0` with <img src='src/resources/facebook.svg' width='25px'/> <img src='src/resources/github.svg' width='25px'/> <img src='src/resources/google.svg' width='25px'/>
 - How to setup a simple email and password sign-up/sign-in
 - Really honing in on destructuring, componentizing, and optimizing code 
 - Great experience working with "out-of-the-box" API calls instead of `fetch`
