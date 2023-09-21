@@ -7,7 +7,8 @@ import {
   FacebookAuthProvider,
   GithubAuthProvider,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  signOut
 } from 'firebase/auth';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
 
@@ -45,7 +46,7 @@ export const signInWithGitHubPopup = () =>
 //creating a firestore db instance
 export const db = getFirestore();
 
-export const createUserDocFromAuth = async (userAuth, additionInfo) => {
+export const createUserDocFromAuth = async (userAuth, additionalInfo) => {
   if (!userAuth) return;
   //doc() takes in the firestore instance, 'const db', from above
   //then a 'collection' name (essentially a table name in SQL)
@@ -99,3 +100,5 @@ export const createUserDocFromAuth = async (userAuth, additionInfo) => {
 
     return await signInWithEmailAndPassword(auth, email, password);
   }
+
+  export const signOutUser = () => signOut(auth);

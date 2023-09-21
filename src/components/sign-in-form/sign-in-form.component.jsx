@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { signInAuthUserWithEmailAndPassword } from '@/utilities/firebase.utils';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { UserContext } from '../../contexts/user.context';
 import SignInOAuth from '../../components/sign-in-oauth/sign-in-oauth.component';
 import FormInput from '../../components/form-input/form-input.component';
 
@@ -14,7 +15,12 @@ const defaultFormFields = {
 export default function SignInForm() {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
-
+  const { setCurrentUser } = useContext(UserContext);
+  
+  const resetFormFields = () => {
+    setFormFields(defaultFormFields);
+  };
+  
   const handleFormChange = (e) => {
     setFormFields((prev) => ({
       ...prev,
@@ -22,16 +28,12 @@ export default function SignInForm() {
     }));
   };
 
-  const resetFormFields = () => {
-    setFormFields(defaultFormFields);
-  };
-
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await signInAuthUserWithEmailAndPassword(email, password);
       resetFormFields();
-      console.log(response);
+      setCurrentUser(response.user)
     } catch (err) {
       switch(err.code) {
         case 'auth/wrong-password':
@@ -45,7 +47,6 @@ export default function SignInForm() {
       }
     }
   };
-
 
   return (
     <div className="w-full h-full mt-12 md:h-3/4 md:w-3/4 mx-auto rounded-md p-2 flex flex-col justify-center items-center gap-6">

@@ -1,5 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
+import { UserProvider } from '../contexts/user.context'
 import Navbar from '../components/navbar/Navbar'
 import { Josefin_Sans } from 'next/font/google'
 
@@ -22,8 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body id='app' className={`bg-stone-900 relative ${primaryFont.className} font-extralight`}>
-        <Navbar />
-        {children}
+        <UserProvider>
+          <Navbar />
+          {children}
+        </UserProvider>
         </body>
     </html>
   )

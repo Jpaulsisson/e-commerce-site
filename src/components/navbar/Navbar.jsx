@@ -5,7 +5,9 @@ import Logo from '../../resources/logo.svg';
 import Menu from '../../resources/menu.svg';
 import { Amaranth } from 'next/font/google';
 import ReactModal from "react-modal";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { UserContext } from "@/contexts/user.context";
+import { signOutUser } from "@/utilities/firebase.utils";
 
 const font = Amaranth({ 
   weight: ['400'],
@@ -23,7 +25,13 @@ export default function Navbar() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [appElement, setAppElement] = useState(undefined)
+  const { currentUser, setCurrentUser } = useContext(UserContext);
   
+  const logOutUser = async () => {
+    await signOutUser();
+    setCurrentUser(null);
+  }
+
   const openModal = () => {
     setIsOpen((prev) => !prev);
   }
@@ -69,9 +77,12 @@ export default function Navbar() {
         <a className="hover:underline" href="/shop">
           <h3>Contact</h3>
         </a>
-        <a className="hover:underline" href="/auth">
+        {currentUser ?
+          <button onClick={logOutUser}>Sign Out</button>
+          :
+          <a className="hover:underline" href="/auth">
           <h3>Sign in</h3>
-        </a>
+        </a>}
       </div>
 
       <ReactModal
@@ -100,26 +111,29 @@ export default function Navbar() {
         }}
       >
         <div
-          className={`${font.className} flex flex-col items-start justify-evenly w-full h-full text-5xl text-black`}
+          className={`${font.className} flex flex-col items-center justify-evenly w-full h-full text-4xl text-black`}
         >
           <a
-            className=" from-slate-300/50 via-slate-300/90 to-transparent bg-gradient-to-l border-t-thin border-b-thin border-r-thin border-amber-300 px-4 py-2 rounded-r-md"
+            className="w-full from-slate-300/50 via-slate-300/90 to-transparent bg-gradient-to-l border-t-thin border-b-thin border-r-thin border-amber-300 px-4 py-2 rounded-r-md"
             href="/about"
           >
-            <h3>Shop</h3>
+            <h3 className="text-center">Shop</h3>
           </a>
           <a
-            className="self-end from-slate-300/50 via-slate-300/90 to-transparent bg-gradient-to-r border-t-thin border-b-thin border-l-thin border-amber-300 px-4 py-2 rounded-l-md"
+            className="w-full from-slate-300/50 via-slate-300/90 to-transparent bg-gradient-to-r border-t-thin border-b-thin border-l-thin border-amber-300 px-4 py-2 rounded-l-md"
             href="/shop"
           >
-            <h3>Contact</h3>
+            <h3 className="text-center">Contact</h3>
           </a>
-          <a
-            className="from-slate-300/50 via-slate-300/90 to-transparent bg-gradient-to-l border-t-thin border-b-thin border-r-thin border-amber-300 px-4 py-2 rounded-r-md"
+          {currentUser ?
+            <button className="w-full from-slate-300/50 via-slate-300/90 to-transparent bg-gradient-to-l border-t-thin border-b-thin border-r-thin border-amber-300 px-4 py-2 rounded-r-md" onClick={logOutUser}>Sign Out</button>
+            :
+            <a
+            className="w-full from-slate-300/50 via-slate-300/90 to-transparent bg-gradient-to-l border-t-thin border-b-thin border-r-thin border-amber-300 px-4 py-2 rounded-r-md"
             href="/auth"
           >
-            <h3>Sign in</h3>
-          </a>
+            <h3 className="text-center">Sign in</h3>
+          </a>}
         </div>
         <button
           onClick={closeModal}

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React from 'react';
 import {
@@ -7,31 +7,38 @@ import {
   signInWithFacebookPopup,
   signInWithGitHubPopup,
 } from '../../utilities/firebase.utils.js';
+import {UseUserContext} from '../../contexts/user.context'
+import { UserContext } from '../../contexts/user.context';
 import GoogleIcon from '../../resources/google.svg';
 import GitHubIcon from '../../resources/github.svg';
 import Image from 'next/image.js';
 
 
 export default function signInOAuth() {
-  const registerGoogleUser = async () => {
+
+  const { setCurrentUser } = UseUserContext();
+
+  const googleLogin = async () => {
     const { user } = await signInWithGooglePopup();
-    console.log(user);
+    setCurrentUser(user);
     createUserDocFromAuth(user);
   };
 
   const logFacebookUser = () => {
     const response = 'this is a fake response. i love you.'
+    setCurrentUser('Facebook User');
     console.log(response);
   };
   const logGitHubUser = () => {
-    const response = 'my blood runs cold.. my memory has just been sold.. angel is the centerfold.. nah nah nah-nah nah nah, nah nah nah nah-nah nah nah nah...'
+    const response = 'my blood runs cold.. my memory has just been sold.. angel is the centerfold.. nah nah nah-nah nah nah, nah nah nah nah-nah nah nah nah...';
+    setCurrentUser('GitHub User');
     console.log(response);
   };
 
   return (
     <div className={`w-full mx-auto flex flex-col items-center justify-center gap-2 text-base`}>
       <button
-        onClick={registerGoogleUser}
+        onClick={googleLogin}
         className="h-12 w-3/4 md:w-1/2 border-2 border-l-yellow-500 border-t-red-500 border-b-green-500 border-r-blue-500 p-2 rounded-md bg-stone-100 text-slate-900 flex gap-2 items-center justify-center">
         Sign in with Google
         <Image src={GoogleIcon} alt="google logo" width={40} height={40} />
