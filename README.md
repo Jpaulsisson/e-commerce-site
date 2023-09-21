@@ -1,34 +1,18 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Everybody &#9825;'s Pizza
 
-## Getting Started
+## Preview:
+<img src='/Users/paulsisson/projects/react/e-commerce-site/my-app/src/resources/preview-desktop.jpg' alt='site-preview' width='250px'/>
+<img src='/Users/paulsisson/projects/react/e-commerce-site/my-app/src/resources/preview-mobile.jpg' alt='site-preview' height='165px'/>
 
-First, run the development server:
+## Things I learned:
+- `Firebase`/`Firestore`
+- Setting up `OAuth2.0` with <img src='/Users/paulsisson/projects/react/e-commerce-site/my-app/src/resources/google.svg' width='25px'/> <img src='/Users/paulsisson/projects/react/e-commerce-site/my-app/src/resources/github.svg' width='25px'/> <img src='/Users/paulsisson/projects/react/e-commerce-site/my-app/src/resources/facebook.svg' width='25px'/>
+- How to setup a simple email and password sign-up/sign-in
+- Really honing in on destructuring, componentizing, and optimizing code 
+- Great experience working with "out-of-the-box" API calls instead of `fetch`
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Challenges I faced while building this:
+1. Getting through the verification processes with each of the third party auth providers was a little rough. They all have different ways of doing things and it leads to a very clunky develope when trying to give the users a few options for signing in/up
+2. 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+`..... in progress`
