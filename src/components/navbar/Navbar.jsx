@@ -21,7 +21,7 @@ export default function Navbar() {
       const newAppElement = document.getElementById('app') || undefined;
     return setAppElement(newAppElement);
     }
-  }, [])
+  }, []) 
 
   const [isOpen, setIsOpen] = useState(false);
   const [appElement, setAppElement] = useState(undefined)
